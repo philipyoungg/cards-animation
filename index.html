@@ -8,6 +8,12 @@
   <script src='card.js'></script>
 </head>
 <style>
+  .app {
+    max-width: 76rem;
+    margin: 0 auto;
+    clear: both;
+  }
+
   .card {
     position: absolute;
     top: 0;
@@ -20,11 +26,12 @@
   }
 
   .container {
-    margin: 2rem;
+    margin: 1rem;
+    padding: 0;
     position: relative;
-    width: 260px;
-    height: 340px;
-    display: inline-block;
+    width: 17rem;
+    height: 22rem;
+    float: left;
   }
 
   .highlight {
@@ -81,38 +88,40 @@
 </style>
 
 <body>
-  <h1>Hover card to see the interaction.</h1>
-  <p>Works only on desktop device.</p>
+  <div class="app">
+    <h1>Hover card to see the interaction.</h1>
+    <p>Works only on desktop device.</p>
 
-  <div class="container">
-    <img src="https://s-media-cache-ak0.pinimg.com/736x/f5/a0/62/f5a0626a80fe6026c0ac65cdc2d8ede2.jpg" class="card" />
-    <div class="highlight"></div>
-    <div class="overlay">
-      <h2>Make</h2>
+    <div class="container">
+      <img src="https://s-media-cache-ak0.pinimg.com/736x/f5/a0/62/f5a0626a80fe6026c0ac65cdc2d8ede2.jpg" class="card" />
+      <div class="highlight"></div>
+      <div class="overlay">
+        <h2>Make</h2>
+      </div>
     </div>
-  </div>
 
-  <div class="container">
-    <img src="https://s-media-cache-ak0.pinimg.com/736x/f5/a0/62/f5a0626a80fe6026c0ac65cdc2d8ede2.jpg" class="card" />
-    <div class="highlight"></div>
-    <div class="overlay">
-      <h2>Love</h2>
+    <div class="container">
+      <img src="https://s-media-cache-ak0.pinimg.com/736x/f5/a0/62/f5a0626a80fe6026c0ac65cdc2d8ede2.jpg" class="card" />
+      <div class="highlight"></div>
+      <div class="overlay">
+        <h2>Love</h2>
+      </div>
     </div>
-  </div>
 
-  <div class="container">
-    <img src="https://s-media-cache-ak0.pinimg.com/736x/f5/a0/62/f5a0626a80fe6026c0ac65cdc2d8ede2.jpg" class="card" />
-    <div class="highlight"></div>
-    <div class="overlay">
-      <h2>Not</h2>
+    <div class="container">
+      <img src="https://s-media-cache-ak0.pinimg.com/736x/f5/a0/62/f5a0626a80fe6026c0ac65cdc2d8ede2.jpg" class="card" />
+      <div class="highlight"></div>
+      <div class="overlay">
+        <h2>Not</h2>
+      </div>
     </div>
-  </div>
 
-  <div class="container">
-    <img src="https://s-media-cache-ak0.pinimg.com/736x/f5/a0/62/f5a0626a80fe6026c0ac65cdc2d8ede2.jpg" class="card" />
-    <div class="highlight"></div>
-    <div class="overlay">
-      <h2>War</h2>
+    <div class="container">
+      <img src="https://s-media-cache-ak0.pinimg.com/736x/f5/a0/62/f5a0626a80fe6026c0ac65cdc2d8ede2.jpg" class="card" />
+      <div class="highlight"></div>
+      <div class="overlay">
+        <h2>War</h2>
+      </div>
     </div>
   </div>
   <script>

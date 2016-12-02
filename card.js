@@ -88,7 +88,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       transform: '\n        perspective(10000px)\n        rotateX(' + rotation.x + 'deg)\n        rotateY(' + rotation.y + 'deg)\n        translate3d(' + movement.x * 1.25 + 'px, ' + movement.y * -1.25 + 'px, 0)\n      '
     });
     _extends(highlight.style, {
-      background: '\n        linear-gradient(\n        to bottom left,\n        rgba(255, 255, 255, 0.1),\n        rgba(255, 255, 255, 0.125) ' + delta.x * 50 + '%,\n        rgba(255, 255, 255, 0.15) ' + delta.y * 90 + '%,\n        rgba(255, 255, 255, 0.125) ' + delta.x * 100 + '%,\n        rgba(0, 0, 0, 0.05))\n      '
+      background: '\n        linear-gradient(\n        to bottom left,\n        rgba(255, 255, 255, 0.05),\n        rgba(255, 255, 255, 0.1) ' + delta.x * 50 + '%,\n        rgba(255, 255, 255, 0.125) ' + delta.y * 100 + '%,\n        rgba(255, 255, 255, 0.1) ' + delta.x * 150 + '%,\n        rgba(0, 0, 0, 0.05))\n      '
     });
   };
 
