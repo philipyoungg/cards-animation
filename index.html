@@ -49,7 +49,7 @@
 
   .overlay h2 {
     position: absolute;
-    bottom: 2rem;
+    bottom: 0;
     font-family: sans-serif;
     color: white;
     transform: translateX(0);
@@ -60,25 +60,35 @@
     width: 100%;
   }
 
-  h2 {
+  h1 {
     font-family: sans-serif;
     letter-spacing: -0.025em;
     text-align: center;
     margin-top: 3rem;
-    font-size: 4rem;
-    margin-bottom: 1rem;
+    font-size: 3rem;
+    margin-bottom: 0;
+    opacity: 0.8;
+  }
+
+  p {
+    font-family: sans-serif;
+    text-align: center;
+    opacity: 0.7;
+    margin-bottom: 3rem;
+    margin-top: 0.5rem;
   }
 
 </style>
 
 <body>
-  <h2>Hover to see card in interaction.</h2>
+  <h1>Hover card to see the interaction.</h1>
+  <p>Works only on desktop device.</p>
 
   <div class="container">
     <img src="https://s-media-cache-ak0.pinimg.com/736x/f5/a0/62/f5a0626a80fe6026c0ac65cdc2d8ede2.jpg" class="card" />
     <div class="highlight"></div>
     <div class="overlay">
-      <h2>Love</h2>
+      <h2>Make</h2>
     </div>
   </div>
 
@@ -94,7 +104,7 @@
     <img src="https://s-media-cache-ak0.pinimg.com/736x/f5/a0/62/f5a0626a80fe6026c0ac65cdc2d8ede2.jpg" class="card" />
     <div class="highlight"></div>
     <div class="overlay">
-      <h2>Love</h2>
+      <h2>Not</h2>
     </div>
   </div>
 
@@ -102,15 +112,7 @@
     <img src="https://s-media-cache-ak0.pinimg.com/736x/f5/a0/62/f5a0626a80fe6026c0ac65cdc2d8ede2.jpg" class="card" />
     <div class="highlight"></div>
     <div class="overlay">
-      <h2>Love</h2>
-    </div>
-  </div>
-
-  <div class="container">
-    <img src="https://s-media-cache-ak0.pinimg.com/736x/f5/a0/62/f5a0626a80fe6026c0ac65cdc2d8ede2.jpg" class="card" />
-    <div class="highlight"></div>
-    <div class="overlay">
-      <h2>Love</h2>
+      <h2>War</h2>
     </div>
   </div>
   <script>
