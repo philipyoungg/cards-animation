@@ -89,5 +89,3 @@ var subscribeCard = function subscribeCard(selector) {
     });
   });
 };
-
-subscribeCard('.container');

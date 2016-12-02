@@ -111,5 +111,3 @@ const subscribeCard = (selector) => {
     });
   });
 };
-
-subscribeCard('.container');
