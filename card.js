@@ -13,23 +13,31 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     return typeof el.ongesturestart === 'function';
   };
 
-  var handleRotate = function handleRotate(e, card, highlight, overlay, text, cardDimension, options) {
-    // mouse position relative to top of card
-    var pos = {
-      x: e.pageX - card.offsetLeft,
-      y: e.pageY - card.offsetTop
+  var handleRotate = function handleRotate(e, card, highlight, overlay, text, options) {
+    var cardDimension = {
+      w: card.getBoundingClientRect().width,
+      h: card.getBoundingClientRect().height
     };
-    var rotation = {
+    // mouse position relative to top of card
+
+    var pageX = e.pageX;
+    var pageY = e.pageY;
+    if (pageX === undefined) {
+      pageX = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+      pageY = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+    }
+    var pos = {
+      x: pageX - card.offsetLeft,
+      y: pageY - card.offsetTop
+    };
+    var delta = {
       x: 0,
       y: 0
     };
     // if mouse position is inside the card, animate it. Else, return to initial position.
     if (pos.x >= 0 && pos.x <= cardDimension.w && pos.y >= 0 && pos.y <= cardDimension.h) {
-      pos.x = e.pageX - card.offsetLeft;
-      pos.y = e.pageY - card.offsetTop;
-
-      rotation.x = (pos.y - cardDimension.h / 2) / (cardDimension.h / -10);
-      rotation.y = (pos.x - cardDimension.w / 2) / (cardDimension.w / 10);
+      delta.x = (pos.y - cardDimension.h / 2) / (cardDimension.h / -2);
+      delta.y = (pos.x - cardDimension.w / 2) / (cardDimension.w / 2);
 
       _extends(card.style, {
         transition: ''
@@ -41,10 +49,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         transition: ''
       });
     } else {
-      pos.x = 0;
-      pos.y = 0;
-      rotation.x = 0;
-      rotation.y = 0;
+      delta.x = 0;
+      delta.y = 0;
 
       _extends(card.style, {
         transition: options.transitionTime,
@@ -60,27 +66,40 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       });
     }
 
-    // start the animation relative to mouse position.
+    var rotation = {
+      x: delta.x * options.maxRotation,
+      y: delta.y * options.maxRotation
+    };
+
+    var movement = {
+      x: delta.y * options.maxMovement,
+      y: delta.x * options.maxMovement
+    };
+
+    // animation the card relative to mouse position.
 
     _extends(card.style, {
-      transform: '\n        perspective(400px)\n        rotateX(' + rotation.x + 'deg)\n        rotateY(' + rotation.y + 'deg)\n        translateY(' + rotation.x / 2 + 'px)\n        translateX(' + rotation.y / 2 + 'px)\n      '
+      transform: '\n        perspective(400px)\n        rotateX(' + rotation.x + 'deg)\n        rotateY(' + rotation.y + 'deg)\n        translate3d(' + movement.x + 'px, ' + movement.y + 'px, 0)\n      '
     });
     _extends(overlay.style, {
-      transform: '\n        perspective(10000px)\n        rotateX(' + rotation.x + 'deg)\n        rotateY(' + rotation.y + 'deg)\n        translateY(' + rotation.x * -1.125 + 'px)\n        translateX(' + rotation.y * 1.125 + 'px)\n      '
+      transform: '\n        perspective(10000px)\n        rotateX(' + rotation.x + 'deg)\n        rotateY(' + rotation.y + 'deg)\n        translate3d(' + movement.x * 1.125 + 'px, ' + movement.y * -1.125 + 'px, 0)\n      '
     });
     _extends(text.style, {
-      transform: '\n        perspective(10000px)\n        rotateX(' + rotation.x + 'deg)\n        rotateY(' + rotation.y + 'deg)\n        translateY(' + rotation.x * -1.25 + 'px)\n        translateX(' + rotation.y * 1.25 + 'px)\n      '
+      transform: '\n        perspective(10000px)\n        rotateX(' + rotation.x + 'deg)\n        rotateY(' + rotation.y + 'deg)\n        translate3d(' + movement.x * 1.25 + 'px, ' + movement.y * -1.25 + 'px, 0)\n      '
     });
     _extends(highlight.style, {
-      background: '\n        linear-gradient(\n        to bottom left,\n        rgba(255, 255, 255, 0.1),\n        rgba(255, 255, 255, 0.125) ' + rotation.x * 10 + '%,\n        rgba(255, 255, 255, 0.15) ' + rotation.y * 20 + '%,\n        rgba(255, 255, 255, 0.125) ' + rotation.x * 30 + '%,\n        rgba(0, 0, 0, 0.05))\n      '
+      background: '\n        linear-gradient(\n        to bottom left,\n        rgba(255, 255, 255, 0.1),\n        rgba(255, 255, 255, 0.125) ' + delta.x * 50 + '%,\n        rgba(255, 255, 255, 0.15) ' + delta.y * 90 + '%,\n        rgba(255, 255, 255, 0.125) ' + delta.x * 100 + '%,\n        rgba(0, 0, 0, 0.05))\n      '
     });
   };
 
   var subscribeCard = function subscribeCard(selector) {
-    var options = {
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
       transitionTime: '0.3s',
-      animationBezier: 'cubic-bezier(.47,.1,.33,1.83)'
+      animationBezier: 'cubic-bezier(.47,.1,.33,1.83)',
+      maxRotation: 5,
+      maxMovement: 2
     };
+
     var cards = d.querySelectorAll(selector);
 
     [].forEach.call(cards, function (card) {
@@ -88,14 +107,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       var overlay = card.querySelector('.overlay');
       var text = overlay.querySelector('h2');
 
-      var cardDimension = {
-        w: card.getBoundingClientRect().width,
-        h: card.getBoundingClientRect().height
-      };
-
       if (!isTouchDevice()) {
         d.addEventListener('mousemove', function (e) {
-          handleRotate(e, card, highlight, overlay, text, cardDimension, options);
+          handleRotate(e, card, highlight, overlay, text, options);
         });
       }
     });
