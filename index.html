@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Hover on card to see magic.</title>
+</head>
+<style>
+  .card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 4px;
+    transition: 0.15s ease-in-out;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.1), 0 5px 30px 5px rgba(0, 0, 0, 0.15), 0 10px 40px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .container {
+    margin: 2rem;
+    position: relative;
+    width: 260px;
+    height: 340px;
+    display: inline-block;
+  }
+
+  .highlight {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient( rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05) 30%, rgba(255, 255, 255, 0.05) 80%, rgba(0, 0, 0, 0.05));
+  }
+
+  .overlay {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    height: 90%;
+    width: 90%;
+    border: 3px solid red;
+    box-sizing: border-box;
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.15), 0 0 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .overlay h2 {
+    position: absolute;
+    bottom: 2rem;
+    font-family: sans-serif;
+    color: white;
+    transform: translateX(0);
+    text-transform: uppercase;
+    font-size: 4rem;
+    line-height: 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  h2 {
+    font-family: sans-serif;
+    letter-spacing: -0.025em;
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+
+</style>
+
+<body>
+  <h2>Hover to see card in interaction.</h2>
+  <a href="http://www.google.com" class="container">
+    <img src="https://s-media-cache-ak0.pinimg.com/736x/f5/a0/62/f5a0626a80fe6026c0ac65cdc2d8ede2.jpg" class="card" />
+    <div class="highlight"></div>
+    <div class="overlay">
+      <h2>Love</h2>
+    </div>
+  </a>
+
+  <a href="http://www.google.com" class="container">
+    <img src="https://s-media-cache-ak0.pinimg.com/736x/f5/a0/62/f5a0626a80fe6026c0ac65cdc2d8ede2.jpg" class="card" />
+    <div class="highlight"></div>
+    <div class="overlay">
+      <h2>Love</h2>
+    </div>
+  </a>
+
+  <a href="http://www.google.com" class="container">
+    <img src="https://s-media-cache-ak0.pinimg.com/736x/f5/a0/62/f5a0626a80fe6026c0ac65cdc2d8ede2.jpg" class="card" />
+    <div class="highlight"></div>
+    <div class="overlay">
+      <h2>Love</h2>
+    </div>
+  </a>
+
+  <a href="http://www.google.com" class="container">
+    <img src="https://s-media-cache-ak0.pinimg.com/736x/f5/a0/62/f5a0626a80fe6026c0ac65cdc2d8ede2.jpg" class="card" />
+    <div class="highlight"></div>
+    <div class="overlay">
+      <h2>Love</h2>
+    </div>
+  </a>
+  <script src='card.js'></script>
+</body>
+
+</html>

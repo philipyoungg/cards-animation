@@ -1,0 +1,18 @@
+{
+  "name": "card",
+  "version": "1.0.0",
+  "description": "",
+  "main": "compiled.js",
+  "dependencies": {
+    "babel-plugin-transform-object-assign": "^6.8.0",
+    "babel-preset-es2015": "^6.18.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel -o card.js src.js"
+  },
+  "keywords": [],
+  "author": "Philip Young Gunawan <hello@philipyoungg.com> (http://www.philipyoungg.com)",
+  "license": "ISC"
+}
